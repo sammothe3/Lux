@@ -27,8 +27,8 @@ var maps = require("./maps.json");
 var interval = {};
 
 io.sockets.on('connection', function(socket) {
-   
-   	//Initilize User.
+
+    //Initilize User.
     var user = addUser();
     console.info("User " + user.colorname + " joined.");
     socket.emit("welcome", state);

@@ -1,13 +1,13 @@
 /*
 *   Global vars.
 */
-var fs = require('fs');
 var TWEEN = require('tween.js');
 
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
+io.set('log level', 1); // reduce logging
 
 /*
 *	HTTP Server.
@@ -113,9 +113,11 @@ var addUser = function() {
 		
 		interval.tick = setInterval(tick, 100);
 	
-		
+		state = STATE.LOBBY;
 		
 	}
+	
+	users.push(user)
 	
 	return user;
 	

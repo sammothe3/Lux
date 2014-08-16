@@ -1,3 +1,44 @@
 {
-    
-}
+    "maps": [
+        {
+            "name": "Le Pit",
+            "desc": "Tiny pit map!",
+            "colors": ["0066FF", "7CBC7C", "FF1919", "9900CC", "939393"],
+            "rules": {
+                "max_level": 5,
+                "max_stars": 100000
+            },
+            "map": [
+                	{"x":0, "z":0, "y":-50, "color":4, "level":2, "ships":[], "AURAid":0},
+                	{"x":0, "z":50, "y":0, "color":4, "level":1, "ships":[], "AURAid":1},
+                	{"x":0, "z":-50, "y":0, "color":4, "level":1, "ships":[], "AURAid":2},
+                	{"x":-50, "z":0, "y":0, "color":4, "level":1, "ships":[], "AURAid":3},
+                	{"x":50, "z":0, "y":0, "color":4, "level":1, "ships":[], "AURAid":4},
+                	{"x":50, "z":50, "y":50, "color":0, "level":1, "ships":[], "AURAid":5},
+                	{"x":50, "z":-50, "y":50, "color":1, "level":1, "ships":[], "AURAid":6},
+                	{"x":-50, "z":50, "y":50, "color":2, "level":1, "ships":[], "AURAid":7},
+                	{"x":-50, "z":-50, "y":50, "color":3, "level":1, "ships":[], "AURAid":8}
+            ]
+        },
+        {
+            "name": "Le Pit 2",
+            "desc": "Massive pit map!",
+            "colors": ["0066FF", "7CBC7C", "FF1919", "9900CC", "939393"],
+            "rules": {
+                "max_level": 5,
+                "max_stars": 100000
+            },
+            "map": [
+                	{"x":0, "z":0, "y":-50, "color":4, "level":2, "ships":[], "AURAid":0},
+                	{"x":0, "z":50, "y":0, "color":1, "level":1, "ships":[], "AURAid":1},
+                	{"x":0, "z":-50, "y":0, "color":2, "level":1, "ships":[], "AURAid":2},
+                	{"x":-50, "z":0, "y":0, "color":3, "level":1, "ships":[], "AURAid":3},
+                	{"x":50, "z":0, "y":0, "color":0, "level":1, "ships":[], "AURAid":4},
+                	{"x":50, "z":50, "y":50, "color":4, "level":1, "ships":[], "AURAid":5},
+                	{"x":50, "z":-50, "y":50, "color":4, "level":1, "ships":[], "AURAid":6},
+                	{"x":-50, "z":50, "y":50, "color":4, "level":1, "ships":[], "AURAid":7},
+                	{"x":-50, "z":-50, "y":50, "color":4, "level":1, "ships":[], "AURAid":8}
+            ]
+        }
+    ]
+}  

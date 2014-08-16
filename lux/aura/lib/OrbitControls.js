@@ -326,9 +326,10 @@ THREE.OrbitControls = function ( object, domElement ) {
 	}
 
 	function onMouseDown( event ) {
-
-		if ( scope.enabled === false ) return;
+		
 		event.preventDefault();
+		
+		if ( scope.enabled === false ) return;
 
 		if ( event.button === 0 ) {
 			if ( scope.noRotate === true ) return;
@@ -360,10 +361,10 @@ THREE.OrbitControls = function ( object, domElement ) {
 	}
 
 	function onMouseMove( event ) {
+		
+		
 
 		if ( scope.enabled === false ) return;
-
-		event.preventDefault();
 
 		var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
 

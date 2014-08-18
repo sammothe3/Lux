@@ -38,13 +38,17 @@ var AURA = {
       //Initialize the lobby
       AURA.state = AURA.STATE.LOBBY;
       
+      document.getElementById("blocker-left").innerHTML = "";
+      
       //Loop of the map objects and add them as divs.
       for(var i = 0; i < AURA.maps.length; i++) {
         var mDiv = document.createElement('div');
         mDiv.style.backgroundColor = "rgba(70,70,70,.5)";
         mDiv.style.borderRadius = '15px';
-        mDiv.id = "mapcont";
+        mDiv.id = "map" + i;
         mDiv.style.cursor = 'pointer';
+        mDiv.style.float = 'left';
+        mDiv.style.margin = '15px';
         mDiv.addEventListener('mousedown', UTIL.onMapClick(i), false);
         
         var mDivInt = document.createElement('div');
@@ -58,11 +62,13 @@ var AURA = {
         mDesc.innerHTML = AURA.maps[i].desc;
         
         var mVote = document.createElement('div');
-        mVote.innerHTML = "VOTE";
+        mVote.innerHTML = AURA.maps[i].votes + " VOTES";
+        mVote.id = "vote" + i;
         mVote.style.backgroundColor = "rgba(65,105,225,.7)";
         mVote.style.borderRadius = '5px';
         mVote.style.cursor = 'pointer';
         //Set listeners for hover/click
+        mVote.addEventListener('mousedown', UTIL.onVoteClick(i), false);
         
 
         mDivInt.appendChild(mTitle);
@@ -123,4 +129,5 @@ var AURA = {
     
 };
 
+document.getElementById("blocker-left").innerHTML = "Connecting...";
 AURA.initTHREE();

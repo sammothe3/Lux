@@ -4,6 +4,7 @@
             "name": "Le Pit",
             "desc": "Tiny pit map!",
             "colors": ["0066FF", "7CBC7C", "FF1919", "9900CC", "939393"],
+            "votes": 0,
             "rules": {
                 "max_level": 5,
                 "max_stars": 100000
@@ -22,8 +23,9 @@
         },
         {
             "name": "Le Pit 2",
-            "desc": "Massive pit map!",
+            "desc": "Small pit map!",
             "colors": ["0066FF", "7CBC7C", "FF1919", "9900CC", "939393"],
+            "votes": 0,
             "rules": {
                 "max_level": 5,
                 "max_stars": 100000

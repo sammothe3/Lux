@@ -7,18 +7,18 @@
             "votes": 0,
             "rules": {
                 "max_level": 5,
-                "max_stars": 100000
+                "max_stars": 20
             },
             "map": [
-                	{"x":0, "z":0, "y":-50, "color":4, "level":2, "ships":[], "AURAid":0},
-                	{"x":0, "z":50, "y":0, "color":4, "level":1, "ships":[], "AURAid":1},
-                	{"x":0, "z":-50, "y":0, "color":4, "level":1, "ships":[], "AURAid":2},
-                	{"x":-50, "z":0, "y":0, "color":4, "level":1, "ships":[], "AURAid":3},
-                	{"x":50, "z":0, "y":0, "color":4, "level":1, "ships":[], "AURAid":4},
-                	{"x":50, "z":50, "y":50, "color":0, "level":1, "ships":[], "AURAid":5},
-                	{"x":50, "z":-50, "y":50, "color":1, "level":1, "ships":[], "AURAid":6},
-                	{"x":-50, "z":50, "y":50, "color":2, "level":1, "ships":[], "AURAid":7},
-                	{"x":-50, "z":-50, "y":50, "color":3, "level":1, "ships":[], "AURAid":8}
+                	{"x":0, "z":0, "y":-50, "color":4, "level":2,"AURAid":0},
+                	{"x":0, "z":50, "y":0, "color":4, "level":1, "AURAid":1},
+                	{"x":0, "z":-50, "y":0, "color":4, "level":1, "AURAid":2},
+                	{"x":-50, "z":0, "y":0, "color":4, "level":1, "AURAid":3},
+                	{"x":50, "z":0, "y":0, "color":4, "level":1, "AURAid":4},
+                	{"x":50, "z":50, "y":50, "color":0, "level":1, "AURAid":5},
+                	{"x":50, "z":-50, "y":50, "color":1, "level":1, "AURAid":6},
+                	{"x":-50, "z":50, "y":50, "color":2, "level":1, "AURAid":7},
+                	{"x":-50, "z":-50, "y":50, "color":3, "level":1, "AURAid":8}
             ]
         },
         {
@@ -28,18 +28,18 @@
             "votes": 0,
             "rules": {
                 "max_level": 5,
-                "max_stars": 100000
+                "max_stars": 20
             },
             "map": [
-                	{"x":0, "z":0, "y":-50, "color":4, "level":2, "ships":[], "AURAid":0},
-                	{"x":0, "z":50, "y":0, "color":1, "level":1, "ships":[], "AURAid":1},
-                	{"x":0, "z":-50, "y":0, "color":2, "level":1, "ships":[], "AURAid":2},
-                	{"x":-50, "z":0, "y":0, "color":3, "level":1, "ships":[], "AURAid":3},
-                	{"x":50, "z":0, "y":0, "color":0, "level":1, "ships":[], "AURAid":4},
-                	{"x":50, "z":50, "y":50, "color":4, "level":1, "ships":[], "AURAid":5},
-                	{"x":50, "z":-50, "y":50, "color":4, "level":1, "ships":[], "AURAid":6},
-                	{"x":-50, "z":50, "y":50, "color":4, "level":1, "ships":[], "AURAid":7},
-                	{"x":-50, "z":-50, "y":50, "color":4, "level":1, "ships":[], "AURAid":8}
+                	{"x":0, "z":0, "y":-50, "color":4, "level":2, "AURAid":0},
+                	{"x":0, "z":50, "y":0, "color":1, "level":1, "AURAid":1},
+                	{"x":0, "z":-50, "y":0, "color":2, "level":1, "AURAid":2},
+                	{"x":-50, "z":0, "y":0, "color":3, "level":1, "AURAid":3},
+                	{"x":50, "z":0, "y":0, "color":0, "level":1, "AURAid":4},
+                	{"x":50, "z":50, "y":50, "color":4, "level":1, "AURAid":5},
+                	{"x":50, "z":-50, "y":50, "color":4, "level":1, "AURAid":6},
+                	{"x":-50, "z":50, "y":50, "color":4, "level":1, "AURAid":7},
+                	{"x":-50, "z":-50, "y":50, "color":4, "level":1, "AURAid":8}
             ]
         }
     ]

@@ -45,8 +45,8 @@ io.sockets.on('connection', function(socket) {
     } else {
     	
     	//Get the map in play right NAOW
-    	
-    	//Send it to them
+    	socket.emit("map", maps.currentmap);
+		socket.emit("ships", maps.currentmap);
     	
     }
     
@@ -139,9 +139,13 @@ var tick = function(sendtouser) {
 						
 					}
 					
-					io.sockets.emit('gamestart', {"map" : votes.maxIndex()});
+					io.sockets.emit('countdown', {time:""});
 					
 					maps.currentmap = JSON.parse(JSON.stringify(maps.maps[votes.maxIndex()]));
+					maps.currentmap.shipgroups = [];
+					maps.currentmap.ships = [];
+					
+					io.sockets.emit('gamestart', {"map" : maps.currentmap.map, "colors" : maps.currentmap.colors});
 					
 					interval.tick = setInterval(tick, 100);
 					
@@ -157,19 +161,67 @@ var tick = function(sendtouser) {
 			
 		}
 		
-	} else {
+	} else if (state === STATE.GAME) {
 		
 		//Collision detection! Yay.
-	
-			//Check distance between objects. (Ship groups and stars)
+		var groups = maps.currentmap.shipgroups;
 		
-			//Individual ship math
-	
+		//Store b/c of modifying array length in loop.
+		var numGroups = groups.length;
+		
+		for(var i = 0; i<numGroups; i++) {
+			
+			for(var j = 0; j<groups.length; j++) {
+				
+				//Check distance between objects. (Ship groups and stars)
+				if(distanceToSquared(groups[0], groups[j]) <= radiusSquared(groups[0])+radiusSquared(groups[j])) {
+				
+					//Individual ship math
+					var OGships = groups[0].ships;
+					var NEships = groups[j].ships;
+					
+					var numShips = OGships.length;
+					for(var h = 0; h<numShips; h++) {
+						
+						for(var f = 0; f<NEships.length; f++) {
+							
+							if(distanceToSquared(OGships[0], NEships[f]) < 0.25) {
+								
+								//Destroy ships.
+								maps.currentmap.ships.removeById(OGships[0].AURAid);
+								
+							}
+							
+						}
+						
+					}
+					
+				
+				}
+				
+			}
+			
+			groups.splice(0, 1);
+			
+		}
+		
 		//Spawn new ships.
-	
+		for(var i = 0; i<maps.currentmap.map; i++) {	
+			
 			//But only on active stars
+			
+			
+			//Check for upgrades on stars
+			
+			
+		}
+		
+	} else {
 	
-		//Upgrade star
+		console.log("Tick error: Running while empty.");
+		maps.currentmap = undefined;
+		clearInterval(interval.tick);
+		clearInterval(interval.tween);
 		
 	}
 	
@@ -218,6 +270,7 @@ var removeUser = function(user) {
 				if ( users.players.length < 1 ) {
 					
 					state = STATE.EMPTY;
+					maps.currentmap = undefined;
 					clearInterval(interval.tick);
 					clearInterval(interval.tween);
 					
@@ -245,6 +298,26 @@ var removeUser = function(user) {
 			
 		}
 		
+	}
+	
+};
+
+var distanceToSquared = function ( a, b ) {
+
+	var dx = a.x - b.x;
+	var dy = a.y - b.y;
+	var dz = a.z - b.z;
+
+	return dx * dx + dy * dy + dz * dz;
+
+};
+
+var radiusSquared = function(obj) {
+	
+	if(obj.level === undefined)	{
+		return obj.radius*obj.radius;
+	} else {
+		return obj.level*5*obj.level*5;
 	}
 	
 };
@@ -308,9 +381,10 @@ Array.prototype.maxIndex = function() {
 	for (var i = 1; i < this.length; i++) {
     	if (this[i] > max) {
     		maxIndex = i;
-        	max = this[i];
+    		max = this[i];
     	}
 	}
 	
 	return maxIndex;
+	
 };

@@ -89,8 +89,7 @@ socket.on("maps", function(data) {
 });
 
 socket.on("voteregistered", function(data) {
-   
-   console.log(data);
+
    document.getElementById("vote"+data.map).innerHTML = data.num + " VOTES";
     
 });

@@ -106,6 +106,12 @@ socket.on("gamestart", function(data) {
     
 });
 
+socket.on("disconnect", function() {
+   
+   document.getElementById("blocker-left").innerHTML = "Disconnected";
+    
+});
+
 
 document.onselectstart = function()
 {

@@ -42,23 +42,7 @@
 				height: 100%;
 
 				position: absolute;
-
-				display: -webkit-box;
-				display: -moz-box;
-				display: box;
-
-				-webkit-box-orient: horizontal;
-				-moz-box-orient: horizontal;
-				box-orient: horizontal;
-
-				-webkit-box-pack: center;
-				-moz-box-pack: center;
-				box-pack: center;
-
-				-webkit-box-align: center;
-				-moz-box-align: center;
-				box-align: center;
-
+				
 				text-align: center;
 
 			}
@@ -66,6 +50,21 @@
 			#panels {
 				
 				overflow:hidden;
+				
+				position: relative;
+  				top: 50%;
+  				transform: translateY(-50%);
+				
+				display: flex;
+				display: -webkit-box;
+				display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+				
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				align-content: center;
 				
 			}
 			

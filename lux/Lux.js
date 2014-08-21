@@ -7,7 +7,6 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
-io.set('log level', 1); // reduce logging
 
 /*
 *	HTTP Server.
@@ -32,7 +31,6 @@ io.sockets.on('connection', function(socket) {
     //Initilize User.
     var user = addUser();
     console.info("User " + user.colorname + " joined.");
-    socket.emit("welcome", state);
     socket.emit("user", user);
     
     
@@ -173,30 +171,59 @@ var tick = function(sendtouser) {
 			
 			for(var j = 0; j<groups.length; j++) {
 				
-				//Check distance between objects. (Ship groups and stars)
-				if(distanceToSquared(groups[0], groups[j]) <= radiusSquared(groups[0])+radiusSquared(groups[j])) {
-				
-					//Individual ship math
-					var OGships = groups[0].ships;
-					var NEships = groups[j].ships;
-					
-					var numShips = OGships.length;
-					for(var h = 0; h<numShips; h++) {
+				//Check distance between groups
+				if(distanceToSquared(groups[0].loc, groups[j].loc) <= radiusSquared(groups[0].loc)+radiusSquared(groups[j]).loc) {
 						
-						for(var f = 0; f<NEships.length; f++) {
+					var nearStar = false;
+						
+					if(groups[0].orbiting || groups[j].orbiting) {
+						
+						nearStar = true;
+						
+					} 
+						
+					if(notSameTeam(groups[0], groups[j])) {
+						
+						//Individual ship math
+						var OGships = groups[0].ships;
+						var NEships = groups[j].ships;
+						
+						var numShips = OGships.length;
+						for(var h = 0; h<numShips; h++) {
 							
-							if(distanceToSquared(OGships[0], NEships[f]) < 0.25) {
+							for(var f = 0; f<NEships.length; f++) {
 								
-								//Destroy ships.
-								maps.currentmap.ships.removeById(OGships[0].AURAid);
+								if(distanceToSquared(OGships.ships[0], NEships.ships[f]) < 0.3) {
+									
+									//Destroy ships.
+									maps.currentmap.shipgroups[i].ships.removeById(OGships[0].AURAid);
+									maps.currentmap.shipgroups[j].ships.removeById(NEships[f].AURAid);
+									
+									maps.currentmap.ships.removeById(OGships[0].AURAid);
+									maps.currentmap.ships.removeById(NEships[f].AURAid);
+									
+									io.sockets.emit("shipsdestroyed", {ids: [OGships[0].AURAid, NEships[f].AURAid]});
+									
+								}
+								
+								if(nearStar) { 
+									
+									
+									
+								}
 								
 							}
 							
+							OGships.splice(0, 1);
+							
 						}
+						
+					} else if (nearStar) { //They are the same team! Check for collisions w/ star.
+						
+						
 						
 					}
 					
-				
 				}
 				
 			}
@@ -212,7 +239,6 @@ var tick = function(sendtouser) {
 			
 			
 			//Check for upgrades on stars
-			
 			
 		}
 		
@@ -319,6 +345,14 @@ var radiusSquared = function(obj) {
 	} else {
 		return obj.level*5*obj.level*5;
 	}
+	
+};
+
+var notSameTeam = function(g1, g2) {
+	
+	if(g1.colorname === g2.colorname) return false;
+	
+	return true;
 	
 };
 

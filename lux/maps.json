@@ -2,6 +2,7 @@
     "maps": [
         {
             "name": "Le Pit",
+            "path": "lepit",
             "desc": "Tiny pit map!",
             "colors": ["0066FF", "7CBC7C", "FF1919", "9900CC", "939393"],
             "votes": 0,
@@ -23,6 +24,7 @@
         },
         {
             "name": "Le Pit 2",
+            "path": "lepit2",
             "desc": "Small pit map!",
             "colors": ["0066FF", "7CBC7C", "FF1919", "9900CC", "939393"],
             "votes": 0,

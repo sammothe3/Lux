@@ -3,7 +3,6 @@
   "version": "0.0.5",
   "description": "Server portion of AuraLux 3D.",
   "main": "Lux.js",
-  "repository": "",
   "author": "Sam C <sammothe3@gmail.com>",
   "dependencies": {
     "socket.io": "^0.9.14",

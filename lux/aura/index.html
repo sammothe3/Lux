@@ -1,96 +1,86 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <title>Minimalist Space RTS</title>
-        
-        <link rel="icon" href="./img/icon.png" type="image/png"/>
-        
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        
-		<style>
-		
-			@font-face { font-family: Visitor; src: url('visitor.ttf'); }
-		
-			html, body {
-				width: 100%;
-				height: 100%;
-			}
 
-			body {
-				background-color: #000000;
-				margin: 0;
-				overflow: hidden;
-				font-family: Visitor;
-				color: #ffffff;
-			}
+<head>
 
-			#blocker {
+	<title>Minimalist Space RTS</title>
 
-				position: absolute;
+	<link rel="icon" href="./img/icon.png" type="image/png" />
 
-				width: 100%;
-				height: 100%;
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-				background-color: rgba(0,0,0,0.5);
+	<style>
+		@font-face {
+			font-family: Visitor;
+			src: url('visitor.ttf');
+		}
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+		body {
+			background-color: #000000;
+			margin: 0;
+			overflow: hidden;
+			font-family: Visitor;
+			color: #ffffff;
+		}
+		#game {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		#blocker {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+		#instructions {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			text-align: center;
+		}
+		#panels {
+			overflow: hidden;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			display: flex;
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			align-content: center;
+		}
+		#map {
+			padding: 10px;
+		}
+	</style>
 
-			}
+</head>
 
-			#instructions {
-
-				width: 100%;
-				height: 100%;
-
-				position: absolute;
-				
-				text-align: center;
-
-			}
-			
-			#panels {
-				
-				overflow:hidden;
-				
-				position: relative;
-  				top: 50%;
-  				transform: translateY(-50%);
-				
-				display: flex;
-				display: -webkit-box;
-				display: -moz-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-				
-				flex-direction: row;
-				justify-content: center;
-				align-items: center;
-				align-content: center;
-				
-			}
-			
-			#map {
-				
-				padding: 10px;
-				
-			}
-			
-			
-		</style>
-		
-    </head>
-    <body>
-        <div id="blocker">
-        <div id="blocker-right" style="float:right; font-size:25pt"></div>
-        <div id="blocker-left" style="float:left; font-size:25pt">Loading...</div>
+<body>
+	<div id="game">
+		<div id="right" style="float:right; font-size:25pt; position: absolute; z-index: 3; margin-right: 5px"></div>
+		<div id="left" style="float:left; font-size:25pt; position: absolute; z-index: 3; margin-left: 5px">Loading...</div>
+		<div id="blocker">
 			<div id="instructions">
 				<div id="panels">
 				</div>
 			</div>
 		</div>
-        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-        <script type="text/javascript" src="/lib/three.min.js"></script>
-        <script type="text/javascript" src="/lib/OrbitControls.js"></script>
-        <script type="text/javascript" src="/lib/util.js"></script>
-        <script type="text/javascript" src="/lib/core.js"></script>
-    </body>
+	</div>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/lib/three.min.js"></script>
+	<script type="text/javascript" src="/lib/OrbitControls.js"></script>
+	<script type="text/javascript" src="/lib/util.js"></script>
+	<script type="text/javascript" src="/lib/core.js"></script>
+</body>
+
 </html>

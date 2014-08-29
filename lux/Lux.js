@@ -110,12 +110,12 @@ io.sockets.on('connection', function(socket) {
  * 	Tick... Tock.
  */
 var tick = function(sendtouser) {
-	
+
 	//See if we're running at the correct speed.
 	interval.current = Date.UTC();
-	
-	if(interval.current - interval.last < interval.interval) return;
-	
+
+	if (interval.current - interval.last < interval.interval) return;
+
 	if (state === STATE.LOBBY) {
 
 		if (interval.time === undefined) {
@@ -178,7 +178,7 @@ var tick = function(sendtouser) {
 
 					setTimeout(tick, 100);
 					interval.interval = 100;
-					
+
 					return;
 
 				}
@@ -195,12 +195,12 @@ var tick = function(sendtouser) {
 			}
 
 		}
-		
+
 		setTimeout(tick, 1000);
 		interval.interval = 1000;
 
 	}
-	
+
 	else if (state === STATE.GAME) {
 
 		//Collision detection! Yay.
@@ -223,20 +223,20 @@ var tick = function(sendtouser) {
 						nearStar = true;
 
 					}
-					
+
 					var enemyGroups = false;
-					
-					if(notSameTeam(groups[0], groups[j])) {
-					
+
+					if (notSameTeam(groups[0], groups[j])) {
+
 						enemyGroups = true;
-						
+
 					}
 
 					if (enemyGroups || nearStar) {
 
 						//Individual ship math
-						var OGships = groups[0].ships;
-						var NEships = groups[j].ships;
+						var OGships = groups[0];
+						var NEships = groups[j];
 
 						var numShips = OGships.length;
 						for (var h = 0; h < numShips; h++) {
@@ -258,17 +258,23 @@ var tick = function(sendtouser) {
 
 								}
 
-								else if (nearStar) {
+							}
 
-									//Calc distance to star - include health.
+							if (nearStar) {
+
+								//Calc distance to star - include health.
+								if (distanceToSquared(OGships.ships[0], maps.currentmap.map.getById(OGships.orbitingID)) < maps.currentmap.map.getById(OGships.orbitingID).level * 15) {
+
 									if (enemyGroups) {
+
 										
+
+									}
+									
+									else {
+
 										
-										
-									} else {
-										
-										
-										
+
 									}
 
 								}
@@ -296,15 +302,15 @@ var tick = function(sendtouser) {
 			updateStar(i);
 
 			//Check for upgrades on stars
-			 
+
 
 		}
-		
+
 		setTimeout(tick, 100);
 		interval.interval = 100;
 
 	}
-	
+
 	else {
 
 		console.log("Tick error: Running while empty.");
@@ -312,7 +318,7 @@ var tick = function(sendtouser) {
 		interval.interval = -1;
 
 	}
-	
+
 	interval.last = Date.UTC();
 
 };

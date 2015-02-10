@@ -155,7 +155,7 @@ socket.on("gamestart", function(data) {
 	console.log(data);
 	AURA.currentmap = data;
 
-	//AURA.initGame();
+	AURA.initGame();
 
 });
 

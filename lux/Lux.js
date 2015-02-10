@@ -92,7 +92,7 @@ io.sockets.on('connection', function(socket) {
 
 		console.info("User " + user.colorname + " commanded " + data.ships.length + " ships.");
 		//Actually command the ships.
-
+		
 
 	});
 
@@ -299,10 +299,10 @@ var tick = function(sendtouser) {
 		for (var i = 0; i < maps.currentmap.map; i++) {
 
 			//But only on active stars
-			updateStar(i);
+			//updateStar(i);
 
 			//Check for upgrades on stars
-
+			
 
 		}
 

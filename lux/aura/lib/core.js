@@ -1,4 +1,4 @@
-/*global THREE UTIL io*/
+/*global THREE UTIL io requestAnimationFrame */
 var AURA = {
 
 	STATE: {
@@ -102,8 +102,12 @@ var AURA = {
 		AURA.state = AURA.STATE.GAME;
 		AURA.setScene(UTIL.sceneFromMap(AURA.currentmap));
 		AURA.controls.enabled = true;
-
-		UTIL.initGameListeners();
+		
+		document.getElementById("blocker").style.display = "none";
+		
+		console.log("Initialized the Game.");
+		
+		//UTIL.initGameListeners();
 
 	},
 
@@ -137,7 +141,6 @@ var AURA = {
 		}
 
 	}
-
 
 };
 
